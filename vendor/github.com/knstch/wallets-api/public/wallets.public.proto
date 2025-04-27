@@ -1,0 +1,26 @@
+syntax = "proto3";
+package wallets.private;
+option go_package = "./";
+
+service Wallets {
+  rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
+}
+
+enum Blockchain {
+  UNKNOWN = 0;
+  POLYGON = 1;
+}
+
+message GetBalanceRequest {
+  Blockchain blockchain = 1;
+}
+
+message GetBalanceResponse {
+  string nativeBalance = 1;
+  repeated Token tokens = 2;
+}
+
+message Token {
+  string symbol = 1;
+  string balance = 2;
+}

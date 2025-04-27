@@ -1,0 +1,71 @@
+package wallets
+
+import (
+	"context"
+	"crypto/aes"
+	"crypto/cipher"
+	"crypto/ecdsa"
+	"crypto/rand"
+	"fmt"
+
+	"github.com/ethereum/go-ethereum/crypto"
+)
+
+type Wallet struct {
+	PublicKey  string
+	PrivateKey []byte
+}
+
+func (svc *ServiceImpl) CreateWallet(ctx context.Context, userID uint) error {
+	wallet, err := generateWallet()
+	if err != nil {
+		return fmt.Errorf("generateWallet: %w", err)
+	}
+
+	if err = wallet.encryptPrivateKey(svc.walletSecret); err != nil {
+		return fmt.Errorf("encryptPrivateKey: %w", err)
+	}
+
+	if err = svc.repo.CreateWallet(ctx, userID, wallet.PublicKey, wallet.PrivateKey); err != nil {
+		return fmt.Errorf("repo.CreateWallet: %w", err)
+	}
+
+	return nil
+}
+
+func generateWallet() (Wallet, error) {
+	privateKey, err := crypto.GenerateKey()
+	if err != nil {
+		return Wallet{}, fmt.Errorf("crypto.GenerateKey: %w", err)
+	}
+
+	privBytes := crypto.FromECDSA(privateKey)
+
+	publicKey := privateKey.Public().(*ecdsa.PublicKey)
+
+	address := crypto.PubkeyToAddress(*publicKey).Hex()
+
+	return Wallet{
+		PublicKey:  address,
+		PrivateKey: privBytes,
+	}, nil
+}
+
+func (w *Wallet) encryptPrivateKey(key string) error {
+	block, err := aes.NewCipher([]byte(key))
+	if err != nil {
+		return fmt.Errorf("wallet.encryptPrivateKey: %w", err)
+	}
+	aesGCM, err := cipher.NewGCM(block)
+	if err != nil {
+		return fmt.Errorf("wallet.encryptPrivateKey: %w", err)
+	}
+	nonce := make([]byte, aesGCM.NonceSize())
+	_, _ = rand.Read(nonce)
+
+	ciphertext := aesGCM.Seal(nonce, nonce, w.PrivateKey, nil)
+
+	w.PrivateKey = ciphertext
+
+	return nil
+}

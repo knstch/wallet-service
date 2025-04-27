@@ -1,5 +1,4 @@
 .idea/
-migrate
 log/
 outbox
 .env

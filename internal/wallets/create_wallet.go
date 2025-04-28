@@ -11,11 +11,6 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
-type Wallet struct {
-	PublicKey  string
-	PrivateKey []byte
-}
-
 func (svc *ServiceImpl) CreateWallet(ctx context.Context, userID uint) error {
 	wallet, err := generateWallet()
 	if err != nil {
@@ -68,4 +63,35 @@ func (w *Wallet) encryptPrivateKey(key string) error {
 	w.PrivateKey = ciphertext
 
 	return nil
+}
+
+func (w *Wallet) decryptPrivateKey(key string) (*ecdsa.PrivateKey, error) {
+	block, err := aes.NewCipher([]byte(key))
+	if err != nil {
+		return nil, fmt.Errorf("aes.NewCiphe: %w", err)
+	}
+
+	aesGCM, err := cipher.NewGCM(block)
+	if err != nil {
+		return nil, fmt.Errorf("cipher.NewGC: %w", err)
+	}
+
+	nonceSize := aesGCM.NonceSize()
+	if len(w.PrivateKey) < nonceSize {
+		return nil, fmt.Errorf("decryptPrivateKey: ciphertext too short")
+	}
+
+	nonce, ciphertext := w.PrivateKey[:nonceSize], w.PrivateKey[nonceSize:]
+
+	plainPrivateKeyBytes, err := aesGCM.Open(nil, nonce, ciphertext, nil)
+	if err != nil {
+		return nil, fmt.Errorf("aesGCM.Ope: %w", err)
+	}
+
+	privateKey, err := crypto.ToECDSA(plainPrivateKeyBytes)
+	if err != nil {
+		return nil, fmt.Errorf("crypto.ToECDSA: %w", err)
+	}
+
+	return privateKey, nil
 }

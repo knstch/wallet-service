@@ -5,15 +5,18 @@ go 1.24.1
 require (
 	github.com/ethereum/go-ethereum v1.15.10
 	github.com/go-kit/kit v0.13.0
+	github.com/go-redis/redis v6.15.9+incompatible
 	github.com/jackc/pgx/v5 v5.7.4
 	github.com/joho/godotenv v1.5.1
 	github.com/kelseyhightower/envconfig v1.4.0
+	github.com/knstch/blockchain-gateway-api v0.0.2
 	github.com/knstch/subtrack-kafka v0.0.14
 	github.com/knstch/subtrack-libs v0.0.16
-	github.com/knstch/wallets-api v0.0.2
+	github.com/knstch/wallets-api v0.0.4
 	github.com/pressly/goose/v3 v3.24.2
+	google.golang.org/grpc v1.72.0
 	gorm.io/driver/postgres v1.5.11
-	gorm.io/gorm v1.25.12
+	gorm.io/gorm v1.26.0
 )
 
 require (
@@ -69,6 +72,8 @@ require (
 	github.com/mmcloughlin/addchain v0.4.0 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
+	github.com/onsi/ginkgo v1.16.5 // indirect
+	github.com/onsi/gomega v1.37.0 // indirect
 	github.com/pierrec/lz4/v4 v4.1.22 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.20.4 // indirect
@@ -95,7 +100,6 @@ require (
 	golang.org/x/sys v0.32.0 // indirect
 	golang.org/x/text v0.24.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250425173222-7b384671a197 // indirect
-	google.golang.org/grpc v1.72.0 // indirect
 	google.golang.org/protobuf v1.36.6 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1 // indirect
 	rsc.io/tmplfunc v0.0.3 // indirect

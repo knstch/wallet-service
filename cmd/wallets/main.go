@@ -4,12 +4,14 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/go-redis/redis"
 	defaultLog "log"
 	"net/http"
 	"os"
 	"os/signal"
 	"path/filepath"
 	"time"
+	"wallets-service/internal/wallets/connections"
 
 	"github.com/knstch/subtrack-libs/endpoints"
 	"github.com/knstch/subtrack-libs/log"
@@ -19,7 +21,6 @@ import (
 
 	"wallets-service/internal/endpoints/public"
 	"wallets-service/internal/wallets"
-	"wallets-service/internal/wallets/connections"
 	"wallets-service/internal/wallets/repo"
 
 	"wallets-service/config"
@@ -60,12 +61,17 @@ func run() error {
 	}
 	dbRepo := repo.NewDBRepo(logger, db)
 
-	conns, err := connections.MakeConnections(cfg, logger)
+	conns, err := connections.MakeConnections(*cfg, logger)
 	if err != nil {
 		return fmt.Errorf("connections.MakeConnections: %w", err)
 	}
 
-	svc := wallets.NewService(logger, dbRepo, cfg, conns)
+	walletsRedisClient := redis.NewClient(&redis.Options{
+		Addr: fmt.Sprintf("%s:%s", cfg.RedisConfig.Host, cfg.RedisConfig.Port),
+		DB:   0,
+	})
+
+	svc := wallets.NewService(logger, dbRepo, cfg, conns, walletsRedisClient)
 
 	publicController := public.NewController(svc, logger, cfg)
 	publicEndpoints := endpoints.InitHttpEndpoints(cfg.ServiceName, publicController.Endpoints())

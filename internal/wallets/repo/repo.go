@@ -6,13 +6,12 @@ import (
 	"time"
 
 	"github.com/jackc/pgx/v5/pgconn"
-
-	"wallets-service/internal/domain/dto"
 )
 
 type Repository interface {
 	CreateWallet(ctx context.Context, userID uint, pubKey string, privateKey []byte) error
-	GetWalletByUserID(ctx context.Context, userID uint) (dto.Wallet, error)
+	GetWalletInfoByUserID(ctx context.Context, userID uint) (WalletInfo, error)
+	GetWallet(ctx context.Context, userID uint) (string, []byte, error)
 
 	Transaction(fn func(st Repository) error) error
 }

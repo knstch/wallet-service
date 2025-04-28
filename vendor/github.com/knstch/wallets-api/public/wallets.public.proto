@@ -6,13 +6,14 @@ service Wallets {
   rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
 }
 
-enum Blockchain {
+enum Network {
   UNKNOWN = 0;
   POLYGON = 1;
+  BSC = 2;
 }
 
 message GetBalanceRequest {
-  Blockchain blockchain = 1;
+  Network network = 1;
 }
 
 message GetBalanceResponse {

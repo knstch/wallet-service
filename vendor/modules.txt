@@ -151,6 +151,15 @@ github.com/go-logr/stdr
 ## explicit; go 1.12
 github.com/go-ole/go-ole
 github.com/go-ole/go-ole/oleutil
+# github.com/go-redis/redis v6.15.9+incompatible
+## explicit
+github.com/go-redis/redis
+github.com/go-redis/redis/internal
+github.com/go-redis/redis/internal/consistenthash
+github.com/go-redis/redis/internal/hashtag
+github.com/go-redis/redis/internal/pool
+github.com/go-redis/redis/internal/proto
+github.com/go-redis/redis/internal/util
 # github.com/golang-jwt/jwt/v5 v5.2.2
 ## explicit; go 1.18
 github.com/golang-jwt/jwt/v5
@@ -269,6 +278,9 @@ github.com/klauspost/compress/internal/le
 github.com/klauspost/compress/internal/snapref
 github.com/klauspost/compress/zstd
 github.com/klauspost/compress/zstd/internal/xxhash
+# github.com/knstch/blockchain-gateway-api v0.0.2
+## explicit; go 1.24
+github.com/knstch/blockchain-gateway-api/private
 # github.com/knstch/subtrack-kafka v0.0.14
 ## explicit; go 1.24.1
 github.com/knstch/subtrack-kafka/consumer
@@ -283,7 +295,7 @@ github.com/knstch/subtrack-libs/prometeus
 github.com/knstch/subtrack-libs/svcerrs
 github.com/knstch/subtrack-libs/tracing
 github.com/knstch/subtrack-libs/transport
-# github.com/knstch/wallets-api v0.0.2
+# github.com/knstch/wallets-api v0.0.4
 ## explicit; go 1.24.1
 github.com/knstch/wallets-api/event
 github.com/knstch/wallets-api/public
@@ -323,6 +335,10 @@ github.com/munnerz/goautoneg
 # github.com/oklog/ulid v1.3.1
 ## explicit
 github.com/oklog/ulid
+# github.com/onsi/ginkgo v1.16.5
+## explicit; go 1.16
+# github.com/onsi/gomega v1.37.0
+## explicit; go 1.23.0
 # github.com/pierrec/lz4/v4 v4.1.22
 ## explicit; go 1.14
 github.com/pierrec/lz4/v4
@@ -587,11 +603,13 @@ gopkg.in/natefinch/lumberjack.v2
 # gorm.io/driver/postgres v1.5.11
 ## explicit; go 1.19
 gorm.io/driver/postgres
-# gorm.io/gorm v1.25.12
+# gorm.io/gorm v1.26.0
 ## explicit; go 1.18
 gorm.io/gorm
 gorm.io/gorm/callbacks
 gorm.io/gorm/clause
+gorm.io/gorm/internal/lru
+gorm.io/gorm/internal/stmt_store
 gorm.io/gorm/logger
 gorm.io/gorm/migrator
 gorm.io/gorm/schema

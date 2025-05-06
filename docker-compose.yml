@@ -55,6 +55,21 @@ services:
     command: [ "redis-server", "--requirepass", "password" ]
     networks:
       - subtrack-net
+  app:
+    container_name: wallets-app
+    restart: always
+    build:
+      context: .
+      dockerfile: docker/go-wallets/go.Dockerfile
+      args:
+        PORT: ${PUBLIC_HTTP_ADDR}
+    image: wallets-app:latest
+    environment:
+      - TZ=Asia/Novosibirsk
+    ports:
+      - ${PUBLIC_HTTP_ADDR}:${PUBLIC_HTTP_ADDR}
+    networks:
+      - subtrack-net
 volumes:
   pg_data:
     name: wallets-pg_data

@@ -2,11 +2,10 @@ package config
 
 import (
 	"fmt"
-	"path/filepath"
-	"strings"
-
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
+	"os"
+	"path/filepath"
 )
 
 type Config struct {
@@ -24,9 +23,11 @@ type Config struct {
 
 	DBConfig DBConfig
 
-	Blockchains BlockchainsConfig
+	Blockchains BlockchainConfig
 
 	RedisConfig RedisConfig
+
+	BlockchainGatewayHost string `envconfig:"BLOCKCHAIN_GATEWAY_HOST" required:"true"`
 }
 
 type DBConfig struct {
@@ -36,8 +37,9 @@ type DBConfig struct {
 	Password string `envconfig:"PG_PASSWORD" required:"true"`
 }
 
-type BlockchainsConfig struct {
+type BlockchainConfig struct {
 	PolygonAddr string `envconfig:"POLYGON_ADDR" required:"true"`
+	BscAddr     string `envconfig:"BSC_ADDR" required:"true"`
 }
 
 type RedisConfig struct {
@@ -47,7 +49,7 @@ type RedisConfig struct {
 }
 
 func (cfg *Config) GetRedisDSN() string {
-	return fmt.Sprintf("redis://:%s@%s:%s/0", cfg.RedisConfig.Password, cfg.RedisConfig.Host, cfg.RedisConfig.Port)
+	return fmt.Sprintf("redis://:%s@%s:%s", cfg.RedisConfig.Password, cfg.RedisConfig.Host, cfg.RedisConfig.Port)
 }
 
 func (cfg *Config) GetDSN() string {
@@ -68,7 +70,7 @@ func GetConfig() (*Config, error) {
 
 func InitENV(dir string) error {
 	if err := godotenv.Load(filepath.Join(dir, ".env.local")); err != nil {
-		if !strings.Contains(err.Error(), "no such file or directory") {
+		if !os.IsNotExist(err) {
 			return fmt.Errorf("godotenv.Load: %w", err)
 		}
 	}

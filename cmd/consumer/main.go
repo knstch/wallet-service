@@ -6,6 +6,7 @@ import (
 	defaultLogger "log"
 	"os"
 	"path/filepath"
+	"wallets-service/internal/wallets/connections"
 
 	kafkaPkg "github.com/knstch/subtrack-kafka/consumer"
 	"github.com/knstch/subtrack-libs/log"
@@ -15,7 +16,6 @@ import (
 
 	"wallets-service/internal/endpoints/consumer"
 	"wallets-service/internal/wallets"
-	"wallets-service/internal/wallets/connections"
 	"wallets-service/internal/wallets/repo"
 
 	"wallets-service/config"
@@ -56,12 +56,12 @@ func run() error {
 	}
 	dbRepo := repo.NewDBRepo(logger, db)
 
-	conns, err := connections.MakeConnections(cfg, logger)
+	conns, err := connections.MakeConnections(*cfg, logger)
 	if err != nil {
 		return fmt.Errorf("connections.MakeConnections: %w", err)
 	}
 
-	svc := wallets.NewService(logger, dbRepo, cfg, conns)
+	svc := wallets.NewService(logger, dbRepo, cfg, conns, nil)
 
 	walletsConsumer, err := kafkaPkg.NewConsumer(cfg.KafkaAddr, "wallets-group", logger)
 	if err != nil {

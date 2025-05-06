@@ -1,34 +1,25 @@
 package connections
 
 import (
-	"context"
 	"fmt"
-	"math/big"
-
 	"github.com/knstch/subtrack-libs/log"
-
 	"wallets-service/config"
-	"wallets-service/internal/domain/dto"
-	"wallets-service/internal/domain/enum"
-	"wallets-service/internal/wallets/connections/blockchain"
+	"wallets-service/internal/wallets/connections/blockchain-gateway"
 )
 
-type Blockchain interface {
-	GetNativeBalance(ctx context.Context, walletAddr string, network enum.Network) (*big.Float, error)
-	GetTokenBalanceAndInfo(ctx context.Context, walletAddr, tokenAddr string, network enum.Network) (dto.TokenInfo, error)
-}
-
 type Connections struct {
-	Blockchain Blockchain
+	Blockchain blockchain.Blockchain
 }
 
-func MakeConnections(cfg *config.Config, lg *log.Logger) (*Connections, error) {
-	blockchainClient, err := blockchain.NewClient(cfg, lg)
+func MakeConnections(cfg config.Config, lg *log.Logger) (*Connections, error) {
+	blockchainGateway, err := blockchain.MakeBlockchainGatewayClient(cfg)
 	if err != nil {
-		return nil, fmt.Errorf("blockchain.NewClient: %w", err)
+		return nil, fmt.Errorf("blockchain.MakeBlockchainGatewayClient: %w", err)
 	}
 
+	blockchainGatewayClient := blockchain.NewClient(lg, blockchainGateway)
+
 	return &Connections{
-		Blockchain: blockchainClient,
+		Blockchain: blockchainGatewayClient,
 	}, nil
 }

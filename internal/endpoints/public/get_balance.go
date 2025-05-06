@@ -5,9 +5,11 @@ import (
 	"fmt"
 	"github.com/go-kit/kit/endpoint"
 	"github.com/knstch/subtrack-libs/svcerrs"
+	"github.com/knstch/subtrack-libs/tracing"
 	"wallets-service/internal/domain/enum"
 	"wallets-service/internal/wallets"
 
+	subtrackEnum "github.com/knstch/subtrack-libs/enum"
 	public "github.com/knstch/wallets-api/public"
 )
 
@@ -18,8 +20,11 @@ func MakeGetBalanceEndpoint(c *Controller) endpoint.Endpoint {
 }
 
 func (c *Controller) GetBalance(ctx context.Context, req *public.GetBalanceRequest) (*public.GetBalanceResponse, error) {
+	ctx, span := tracing.StartSpan(ctx, "public: GetBalance")
+	defer span.End()
+
 	network := enum.ConvertPublicNetworkToService(req.Network)
-	if network == enum.UnknownNetwork {
+	if network == subtrackEnum.UnknownNetwork {
 		return nil, fmt.Errorf("unknown network: %w", svcerrs.ErrDataNotFound)
 	}
 

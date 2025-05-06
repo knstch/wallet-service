@@ -7,12 +7,16 @@ import (
 	"fmt"
 	"github.com/go-redis/redis"
 	"github.com/knstch/subtrack-libs/auth"
+	"github.com/knstch/subtrack-libs/tracing"
 	"time"
 
-	"wallets-service/internal/domain/enum"
+	"github.com/knstch/subtrack-libs/enum"
 )
 
 func (svc *ServiceImpl) GetBalance(ctx context.Context, network enum.Network) (*WalletWithBalance, error) {
+	ctx, span := tracing.StartSpan(ctx, "service: GetBalance")
+	defer span.End()
+
 	userInfo, err := auth.GetUserData(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("auth.GetUserInfoFromContext: %w", err)

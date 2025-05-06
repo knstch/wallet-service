@@ -7,11 +7,15 @@ import (
 	"crypto/ecdsa"
 	"crypto/rand"
 	"fmt"
+	"github.com/knstch/subtrack-libs/tracing"
 
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
 func (svc *ServiceImpl) CreateWallet(ctx context.Context, userID uint) error {
+	ctx, span := tracing.StartSpan(ctx, "service: CreateWallet")
+	defer span.End()
+
 	wallet, err := generateWallet()
 	if err != nil {
 		return fmt.Errorf("generateWallet: %w", err)

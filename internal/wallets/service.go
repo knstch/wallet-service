@@ -2,7 +2,7 @@ package wallets
 
 import (
 	"context"
-	"wallets-service/internal/domain/enum"
+	"github.com/knstch/subtrack-libs/enum"
 	"wallets-service/internal/wallets/connections"
 
 	"github.com/knstch/subtrack-libs/log"

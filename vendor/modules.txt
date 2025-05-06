@@ -1,16 +1,6 @@
 # github.com/IBM/sarama v1.43.3
 ## explicit; go 1.19
 github.com/IBM/sarama
-# github.com/Microsoft/go-winio v0.6.2
-## explicit; go 1.21
-github.com/Microsoft/go-winio
-github.com/Microsoft/go-winio/internal/fs
-github.com/Microsoft/go-winio/internal/socket
-github.com/Microsoft/go-winio/internal/stringbuffer
-github.com/Microsoft/go-winio/pkg/guid
-# github.com/StackExchange/wmi v1.2.1
-## explicit; go 1.13
-github.com/StackExchange/wmi
 # github.com/ThreeDotsLabs/watermill v1.4.6
 ## explicit; go 1.21
 github.com/ThreeDotsLabs/watermill
@@ -23,51 +13,12 @@ github.com/ThreeDotsLabs/watermill-kafka/v3/pkg/kafka
 # github.com/beorn7/perks v1.0.1
 ## explicit; go 1.11
 github.com/beorn7/perks/quantile
-# github.com/bits-and-blooms/bitset v1.17.0
-## explicit; go 1.16
-github.com/bits-and-blooms/bitset
 # github.com/cespare/xxhash/v2 v2.3.0
 ## explicit; go 1.11
 github.com/cespare/xxhash/v2
-# github.com/consensys/bavard v0.1.22
-## explicit; go 1.22
-github.com/consensys/bavard
-# github.com/consensys/gnark-crypto v0.14.0
-## explicit; go 1.22
-github.com/consensys/gnark-crypto/ecc
-github.com/consensys/gnark-crypto/ecc/bls12-381
-github.com/consensys/gnark-crypto/ecc/bls12-381/bandersnatch
-github.com/consensys/gnark-crypto/ecc/bls12-381/fp
-github.com/consensys/gnark-crypto/ecc/bls12-381/fr
-github.com/consensys/gnark-crypto/ecc/bls12-381/internal/fptower
-github.com/consensys/gnark-crypto/field/generator/config
-github.com/consensys/gnark-crypto/field/generator/internal/addchain
-github.com/consensys/gnark-crypto/field/hash
-github.com/consensys/gnark-crypto/field/pool
-github.com/consensys/gnark-crypto/internal/generator/config
-github.com/consensys/gnark-crypto/internal/parallel
-# github.com/crate-crypto/go-ipa v0.0.0-20240724233137-53bbb0ceb27a
-## explicit; go 1.18
-github.com/crate-crypto/go-ipa
-github.com/crate-crypto/go-ipa/bandersnatch
-github.com/crate-crypto/go-ipa/bandersnatch/fp
-github.com/crate-crypto/go-ipa/bandersnatch/fr
-github.com/crate-crypto/go-ipa/banderwagon
-github.com/crate-crypto/go-ipa/common
-github.com/crate-crypto/go-ipa/common/parallel
-github.com/crate-crypto/go-ipa/ipa
-# github.com/crate-crypto/go-kzg-4844 v1.1.0
-## explicit; go 1.20
-github.com/crate-crypto/go-kzg-4844
-github.com/crate-crypto/go-kzg-4844/internal/kzg
-github.com/crate-crypto/go-kzg-4844/internal/multiexp
-github.com/crate-crypto/go-kzg-4844/internal/utils
 # github.com/davecgh/go-spew v1.1.1
 ## explicit
 github.com/davecgh/go-spew/spew
-# github.com/deckarep/golang-set/v2 v2.6.0
-## explicit; go 1.18
-github.com/deckarep/golang-set/v2
 # github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1
 ## explicit; go 1.16
 github.com/decred/dcrd/dcrec/secp256k1/v4
@@ -84,45 +35,18 @@ github.com/eapache/go-xerial-snappy
 # github.com/eapache/queue v1.1.0
 ## explicit
 github.com/eapache/queue
-# github.com/ethereum/c-kzg-4844 v1.0.0
-## explicit; go 1.19
-github.com/ethereum/c-kzg-4844/bindings/go
 # github.com/ethereum/go-ethereum v1.15.10
 ## explicit; go 1.23.0
-github.com/ethereum/go-ethereum
-github.com/ethereum/go-ethereum/accounts
-github.com/ethereum/go-ethereum/accounts/abi
-github.com/ethereum/go-ethereum/accounts/abi/bind/v2
-github.com/ethereum/go-ethereum/accounts/external
-github.com/ethereum/go-ethereum/accounts/keystore
 github.com/ethereum/go-ethereum/common
 github.com/ethereum/go-ethereum/common/hexutil
 github.com/ethereum/go-ethereum/common/math
-github.com/ethereum/go-ethereum/common/mclock
-github.com/ethereum/go-ethereum/core/types
 github.com/ethereum/go-ethereum/crypto
-github.com/ethereum/go-ethereum/crypto/kzg4844
 github.com/ethereum/go-ethereum/crypto/secp256k1
 github.com/ethereum/go-ethereum/crypto/secp256k1/libsecp256k1/include
 github.com/ethereum/go-ethereum/crypto/secp256k1/libsecp256k1/src
 github.com/ethereum/go-ethereum/crypto/secp256k1/libsecp256k1/src/modules/recovery
-github.com/ethereum/go-ethereum/ethclient
-github.com/ethereum/go-ethereum/event
-github.com/ethereum/go-ethereum/log
-github.com/ethereum/go-ethereum/metrics
-github.com/ethereum/go-ethereum/p2p/netutil
-github.com/ethereum/go-ethereum/params
-github.com/ethereum/go-ethereum/params/forks
 github.com/ethereum/go-ethereum/rlp
 github.com/ethereum/go-ethereum/rlp/internal/rlpstruct
-github.com/ethereum/go-ethereum/rpc
-github.com/ethereum/go-ethereum/signer/core/apitypes
-# github.com/ethereum/go-verkle v0.2.2
-## explicit; go 1.22
-github.com/ethereum/go-verkle
-# github.com/fsnotify/fsnotify v1.6.0
-## explicit; go 1.16
-github.com/fsnotify/fsnotify
 # github.com/go-chi/chi/v5 v5.2.1
 ## explicit; go 1.20
 github.com/go-chi/chi/v5
@@ -147,10 +71,6 @@ github.com/go-logr/logr/funcr
 # github.com/go-logr/stdr v1.2.2
 ## explicit; go 1.16
 github.com/go-logr/stdr
-# github.com/go-ole/go-ole v1.3.0
-## explicit; go 1.12
-github.com/go-ole/go-ole
-github.com/go-ole/go-ole/oleutil
 # github.com/go-redis/redis v6.15.9+incompatible
 ## explicit
 github.com/go-redis/redis
@@ -169,9 +89,6 @@ github.com/golang/snappy
 # github.com/google/uuid v1.6.0
 ## explicit
 github.com/google/uuid
-# github.com/gorilla/websocket v1.4.2
-## explicit; go 1.12
-github.com/gorilla/websocket
 # github.com/hashicorp/errwrap v1.1.0
 ## explicit
 github.com/hashicorp/errwrap
@@ -285,10 +202,11 @@ github.com/knstch/blockchain-gateway-api/private
 ## explicit; go 1.24.1
 github.com/knstch/subtrack-kafka/consumer
 github.com/knstch/subtrack-kafka/topics
-# github.com/knstch/subtrack-libs v0.0.16
+# github.com/knstch/subtrack-libs v0.0.17
 ## explicit; go 1.24.1
 github.com/knstch/subtrack-libs/auth
 github.com/knstch/subtrack-libs/endpoints
+github.com/knstch/subtrack-libs/enum
 github.com/knstch/subtrack-libs/log
 github.com/knstch/subtrack-libs/middleware
 github.com/knstch/subtrack-libs/prometeus
@@ -305,30 +223,6 @@ github.com/lithammer/shortuuid/v3
 # github.com/mfridman/interpolate v0.0.2
 ## explicit; go 1.19
 github.com/mfridman/interpolate
-# github.com/mmcloughlin/addchain v0.4.0
-## explicit; go 1.16
-github.com/mmcloughlin/addchain
-github.com/mmcloughlin/addchain/acc
-github.com/mmcloughlin/addchain/acc/ast
-github.com/mmcloughlin/addchain/acc/ir
-github.com/mmcloughlin/addchain/acc/parse
-github.com/mmcloughlin/addchain/acc/parse/internal/parser
-github.com/mmcloughlin/addchain/acc/pass
-github.com/mmcloughlin/addchain/acc/printer
-github.com/mmcloughlin/addchain/alg
-github.com/mmcloughlin/addchain/alg/contfrac
-github.com/mmcloughlin/addchain/alg/dict
-github.com/mmcloughlin/addchain/alg/ensemble
-github.com/mmcloughlin/addchain/alg/exec
-github.com/mmcloughlin/addchain/alg/heuristic
-github.com/mmcloughlin/addchain/alg/opt
-github.com/mmcloughlin/addchain/internal/bigint
-github.com/mmcloughlin/addchain/internal/bigints
-github.com/mmcloughlin/addchain/internal/bigvector
-github.com/mmcloughlin/addchain/internal/container/heap
-github.com/mmcloughlin/addchain/internal/errutil
-github.com/mmcloughlin/addchain/internal/print
-github.com/mmcloughlin/addchain/meta
 # github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822
 ## explicit
 github.com/munnerz/goautoneg
@@ -384,19 +278,6 @@ github.com/rcrowley/go-metrics
 # github.com/sethvargo/go-retry v0.3.0
 ## explicit; go 1.21
 github.com/sethvargo/go-retry
-# github.com/shirou/gopsutil v3.21.4-0.20210419000835-c7a38de76ee5+incompatible
-## explicit
-github.com/shirou/gopsutil/cpu
-github.com/shirou/gopsutil/internal/common
-# github.com/supranational/blst v0.3.14
-## explicit; go 1.11
-github.com/supranational/blst/bindings/go
-# github.com/tklauser/go-sysconf v0.3.12
-## explicit; go 1.13
-github.com/tklauser/go-sysconf
-# github.com/tklauser/numcpus v0.6.1
-## explicit; go 1.13
-github.com/tklauser/numcpus
 # go.opentelemetry.io/auto/sdk v1.1.0
 ## explicit; go 1.22.0
 go.opentelemetry.io/auto/sdk
@@ -458,7 +339,6 @@ go.uber.org/zap/zapcore
 ## explicit; go 1.23.0
 golang.org/x/crypto/md4
 golang.org/x/crypto/pbkdf2
-golang.org/x/crypto/scrypt
 golang.org/x/crypto/sha3
 # golang.org/x/net v0.39.0
 ## explicit; go 1.23.0
@@ -614,7 +494,3 @@ gorm.io/gorm/logger
 gorm.io/gorm/migrator
 gorm.io/gorm/schema
 gorm.io/gorm/utils
-# rsc.io/tmplfunc v0.0.3
-## explicit; go 1.17
-rsc.io/tmplfunc
-rsc.io/tmplfunc/internal/parse

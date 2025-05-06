@@ -5,12 +5,16 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/knstch/subtrack-libs/tracing"
 
 	"github.com/knstch/subtrack-libs/svcerrs"
 	"gorm.io/gorm"
 )
 
 func (r *DBRepo) GetWalletInfoByUserID(ctx context.Context, userID uint) (WalletInfo, error) {
+	ctx, span := tracing.StartSpan(ctx, "repository: GetWalletInfoByUserID")
+	defer span.End()
+
 	tx := r.db.WithContext(ctx)
 
 	var wallet Wallet
@@ -43,6 +47,9 @@ func (r *DBRepo) GetWalletInfoByUserID(ctx context.Context, userID uint) (Wallet
 }
 
 func (r *DBRepo) GetWallet(ctx context.Context, userID uint) (string, []byte, error) {
+	ctx, span := tracing.StartSpan(ctx, "repository: GetWallet")
+	defer span.End()
+
 	var wallet Wallet
 	if err := r.db.WithContext(ctx).First(&wallet, "user_id = ?", userID).Error; err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {

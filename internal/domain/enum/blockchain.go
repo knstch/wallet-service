@@ -2,27 +2,17 @@ package enum
 
 import (
 	public "github.com/knstch/wallets-api/public"
+
+	"github.com/knstch/subtrack-libs/enum"
 )
 
-type Network string
-
-func (n Network) String() string {
-	return string(n)
-}
-
-const (
-	UnknownNetwork Network = "unknown"
-	PolygonNetwork Network = "polygon"
-	BscNetwork     Network = "bsc"
-)
-
-func ConvertPublicNetworkToService(network public.Network) Network {
+func ConvertPublicNetworkToService(network public.Network) enum.Network {
 	switch network {
 	case public.Network_POLYGON:
-		return PolygonNetwork
+		return enum.PolygonNetwork
 	case public.Network_BSC:
-		return BscNetwork
+		return enum.BscNetwork
 	default:
-		return UnknownNetwork
+		return enum.UnknownNetwork
 	}
 }

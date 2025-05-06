@@ -119,8 +119,8 @@ github.com/knstch/blockchain-gateway-api v0.0.2 h1:hI+q+IA6OgTp35XBE2UKwV5YxkP9C
 github.com/knstch/blockchain-gateway-api v0.0.2/go.mod h1:F8RVwMXu6pDQbB6GO4/zY4mwUK16obUjHeUm+2R3P3Q=
 github.com/knstch/subtrack-kafka v0.0.14 h1:DEGksXyhL2X5FJuBK6rXpXIxlMyPIOBv7WY4vW+OkDQ=
 github.com/knstch/subtrack-kafka v0.0.14/go.mod h1:AqUN5Urq43yHuVGDmfKR+r2ajUs9I2h8f7vNR3K/nn4=
-github.com/knstch/subtrack-libs v0.0.17 h1:HoKkB7hD4acwV3iRKtrjlQIR7C+a9miwABmtVLj0NTE=
-github.com/knstch/subtrack-libs v0.0.17/go.mod h1:1C9Rpni0c17wZfP5oP3mxKwywMVywtQr/zqBjMh4GLc=
+github.com/knstch/subtrack-libs v0.1.2 h1:09GM1TolOndojB/FR5cGuLaM8AY/6IV8nwYecwxnHuM=
+github.com/knstch/subtrack-libs v0.1.2/go.mod h1:1C9Rpni0c17wZfP5oP3mxKwywMVywtQr/zqBjMh4GLc=
 github.com/knstch/wallets-api v0.0.4 h1:O+v1gUj2RZKAyYOt2VlQ22P7lbuga+pUSs68zYWPYgE=
 github.com/knstch/wallets-api v0.0.4/go.mod h1:sc5wklXHv/B7T4hwjFxfYbct9Sb/NVrR0kPJ4+fSUVc=
 github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0SNc=
@@ -187,6 +187,8 @@ github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9dec
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 go.opentelemetry.io/auto/sdk v1.1.0 h1:cH53jehLUN6UFLY71z+NDOiNJqDdPRaXzTel0sJySYA=
 go.opentelemetry.io/auto/sdk v1.1.0/go.mod h1:3wSPjt5PWp2RhlCcmmOial7AvC4DQqZb7a7wCow3W8A=
+go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.60.0 h1:x7wzEgXfnzJcHDwStJT+mxOz4etr2EcexjqhBvmoakw=
+go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.60.0/go.mod h1:rg+RlpR5dKwaS95IyyZqj5Wd4E13lk/msnTS0Xl9lJM=
 go.opentelemetry.io/otel v1.35.0 h1:xKWKPxrxB6OtMCbmMY021CqC45J+3Onta9MqjhnusiQ=
 go.opentelemetry.io/otel v1.35.0/go.mod h1:UEqy8Zp11hpkUrL73gSlELM0DupHoiq72dR+Zqel/+Y=
 go.opentelemetry.io/otel/exporters/jaeger v1.17.0 h1:D7UpUy2Xc2wsi1Ras6V40q806WM07rqoCWzXu7Sqy+4=

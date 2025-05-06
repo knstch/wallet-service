@@ -5,7 +5,9 @@ import (
 	"fmt"
 	blockchainGatewayApi "github.com/knstch/blockchain-gateway-api/private"
 	"github.com/knstch/subtrack-libs/log"
-	"wallets-service/internal/domain/enum"
+	"github.com/knstch/subtrack-libs/tracing"
+
+	"github.com/knstch/subtrack-libs/enum"
 )
 
 type Blockchain interface {
@@ -25,6 +27,9 @@ func NewClient(lg *log.Logger, conn blockchainGatewayApi.BlockchainGatewayClient
 }
 
 func (c *ClientImpl) GetBalance(ctx context.Context, pubAddr string, tokens []string, network enum.Network) (Balance, error) {
+	ctx, span := tracing.StartSpan(ctx, "client: GetBalance")
+	defer span.End()
+
 	resp, err := c.conn.GetBalance(ctx, &blockchainGatewayApi.GetBalanceRequest{
 		PublicAddress:  pubAddr,
 		TokenAddresses: tokens,
